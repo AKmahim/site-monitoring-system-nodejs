@@ -1,0 +1,19 @@
+CREATE DATABASE monitoring;
+
+USE monitoring;
+
+CREATE TABLE issues (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    site VARCHAR(255) NOT NULL,
+    error TEXT NOT NULL,
+    timestamp DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE statuses (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    site VARCHAR(255) NOT NULL UNIQUE,
+    status ENUM('UP', 'DOWN') NOT NULL,
+    last_checked DATETIME DEFAULT CURRENT_TIMESTAMP,
+    screenshot_mobile VARCHAR(255),
+    screenshot_desktop VARCHAR(255)
+);
